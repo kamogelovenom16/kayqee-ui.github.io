@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - Kamogelo Knowledge Hub</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="script.js"></script>
+</head>
+<body>
+<header>
+<div class="nav">
+  <div class="brand">Kamogelo Knowledge Hub</div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="guides.html">Guides</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="terms.html">Terms</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+    </ul>
+  </nav>
+</div>
+</header>
+
+<main class="container">
+<h1>Contact Kamogelo Knowledge Hub</h1>
+<p>You can reach out to us with questions or suggestions. We’ll get back to you as soon as possible.</p>
+
+<form id="contactForm" novalidate>
+  <label>Email:
+    <input type="email" name="email" required placeholder="you@example.com">
+  </label>
+  <label>Subject:
+    <input type="text" name="subject" required placeholder="Your subject">
+  </label>
+  <label>Message:
+    <textarea name="message" required placeholder="Your message"></textarea>
+  </label>
+  <button type="submit" class="btn primary">Send</button>
+  <p id="contactNote" class="note" aria-live="polite"></p>
+  <p class="note">By sending a message, you agree to our <a href="privacy.html">Privacy Policy</a>.</p>
+</form>
+</main>
+
+<footer>
+<p>&copy; 2025 Kamogelo Knowledge Hub | Owner: Given Khorommbi | Email: <a href="mailto:gkamo3528@gmail.com">gkamo3528@gmail.com</a> | Phone: 0774241526</p>
+</footer>
+<div id="cookie" class="cookie" role="dialog" aria-live="polite" aria-label="Cookie Consent">
+  <div>
+    <strong>We use cookies</strong>
+    <p class="muted" style="margin:.3em 0">
+      We use cookies for basic site functionality, analytics, and personalized ads.
+    </p>
+  </div>
+  <div style="display:flex; gap:8px; align-items:center">
+    <button class="btn" id="cookieDecline">Decline</button>
+    <button class="btn primary" id="cookieAccept">Allow</button>
+  </div>
+</div>
+</body>
+</html>

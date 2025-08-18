@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kamogelo Tech Guides – Everyday Tech Help</title>
+  <meta name="description" content="Original tech guides: Android, Wi-Fi, Windows, privacy, productivity, and more. AdSense-friendly and fully structured." />
+  <style>
+    body {margin:0; font-family: system-ui,-apple-system,Segoe UI,Roboto,sans-serif; background:#fff; color:#121417; line-height:1.6;}
+    header{padding:16px; background:#f5f7fb; border-bottom:1px solid #e5e9f2;}
+    .nav a{margin-right:12px; text-decoration:none; color:#2563eb;}
+    .container{max-width:1100px; margin:0 auto; padding:24px;}
+    .grid{display:grid; gap:20px;}
+    @media(min-width:900px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}}
+    .card{border:1px solid #e5e9f2; border-radius:16px; padding:18px; box-shadow:0 10px 30px rgba(2,6,23,.08);}
+    .meta{color:#606771; font-size:.9rem; margin-bottom:8px;}
+    h2{margin:0 0 8px;}
+    details{margin-top:8px;}
+    summary{cursor:pointer; font-weight:600;}
+    #searchInput{width:100%; padding:10px; margin-bottom:20px; border:1px solid #e5e9f2; border-radius:12px;}
+    footer{margin-top:40px; padding:16px; border-top:1px solid #e5e9f2; text-align:center; color:#606771;}
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav container">
+      <a href="index.html">Home</a>
+      <a href="guides.html">Guides</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Tech Guides – Original Tutorials & Fixes</h1>
+    <input type="text" id="searchInput" placeholder="Search guides..." aria-label="Search guides">
+    <section id="guides" class="grid cols-3"></section>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> Kamogelo Khorommbi. All rights reserved.
+  </footer>
+
+  <script>
+    const ARTICLES = [
+      {
+        slug: "speed-up-android",
+        title: "10 Honest Ways to Make an Old Android Phone Feel New",
+        date: "2025-05-10",
+        read: 7,
+        excerpt: "Simple tweaks to make your Android feel like new again.",
+        content: `<p>Old Android phones don’t have to feel slow. Follow these steps:</p>
+        <h3>1) Remove Background Apps</h3><p>Disable unnecessary apps from autostarting.</p>
+        <h3>2) Free 20% Storage</h3><p>Keep storage free by offloading files to cloud.</p>
+        <h3>3) Use Lightweight Launcher</h3><p>Minimal launchers reduce RAM usage.</p>
+        <h3>4) Limit Animations</h3><p>Reduce animation scales in Developer Options.</p>
+        <h3>5) Keep System Lean</h3><p>Uninstall heavy apps, prefer web versions.</p>
+        <h3>6) Clear Cache</h3><p>Clear cached data regularly to free storage.</p>
+        <h3>7) Update System & Apps</h3><p>Keep OS and apps updated for stability.</p>
+        <h3>8) Disable Widgets</h3><p>Widgets refresh constantly; remove unused ones.</p>
+        <h3>9) Monitor CPU & Battery</h3><p>Identify and limit heavy apps.</p>
+        <h3>10) Restart Occasionally</h3><p>Rebooting can temporarily improve performance.</p>`
+      },
+      {
+        slug: "wifi-drops-fix",
+        title: "Wi-Fi Keeps Dropping? Fix It in 15 Minutes",
+        date: "2025-06-02",
+        read: 6,
+        excerpt: "Quick fixes for random Wi-Fi disconnections.",
+        content: `<p>Random Wi-Fi drops are often due to interference or router issues.</p>
+        <h3>Quick Checks</h3><ul>
+        <li>Place router high and central.</li>
+        <li>Use fixed channels: 1, 6, 11 for 2.4 GHz; DFS-free for 5 GHz.</li>
+        <li>Test with another device to rule out client issues.</li></ul>
+        <h3>DNS & IP</h3><p>Set reliable DNS servers. Renew DHCP lease if needed.</p>
+        <h3>Firmware Update</h3><p>Keep router firmware up to date.</p>`
+      },
+      {
+        slug: "clean-boot-windows",
+        title: "The Clean-Boot Playbook for Windows 10/11",
+        date: "2025-05-21",
+        read: 8,
+        excerpt: "Diagnose slow boots and crashes safely.",
+        content: `<p>A clean boot starts Windows with minimal drivers/services to isolate issues.</p>
+        <ol>
+        <li>Press <kbd>Win</kbd> + <kbd>R</kbd>, type <code>msconfig</code>.</li>
+        <li>Disable non-Microsoft services, reboot.</li>
+        <li>Re-enable in batches until the problem returns.</li>
+        </ol>
+        <p>Create a restore point before starting.</p>`
+      },
+      {
+        slug: "privacy-checklist",
+        title: "Privacy Basics Anyone Can Do in 30 Minutes",
+        date: "2025-04-28",
+        read: 5,
+        excerpt: "Small steps with big impact on your privacy.",
+        content: `<ul>
+        <li>Revoke unnecessary app permissions.</li>
+        <li>Use a separate browser profile for banking/shopping.</li>
+        <li>Enable device encryption and strong screen lock.</li>
+        <li>Check app access to microphone/camera.</li>
+        <li>Update passwords regularly and use a password manager.</li>
+        </ul>`
+      },
+      {
+        slug: "google-drive-space",
+        title: "Free Up Space in Google Drive Without Deleting Files",
+        date: "2025-07-11",
+        read: 6,
+        excerpt: "Optimize cloud storage safely.",
+        content: `<p>Sort by file size, remove trash, and compress large files.</p>
+        <ul>
+        <li>Convert Docs/Sheets to PDFs if not actively used.</li>
+        <li>Move rarely used files to shared drives.</li>
+        <li>Empty hidden trash and cached versions.</li>
+        </ul>`
+      },
+      {
+        slug: "password-security",
+        title: "Password Security Tips Everyone Should Follow",
+        date: "2025-08-01",
+        read: 5,
+        excerpt: "Keep accounts safe with these actionable tips.",
+        content: `<ul>
+        <li>Use a password manager to create strong, unique passwords.</li>
+        <li>Enable two-factor authentication (2FA).</li>
+        <li>Regularly update passwords and avoid reuse.</li>
+        <li>Beware of phishing emails and suspicious links.</li>
+        </ul>`
+      },
+      {
+        slug: "android-battery-tips",
+        title: "Extend Your Android Battery Life Easily",
+        date: "2025-07-15",
+        read: 6,
+        excerpt: "Real tips to make your battery last longer.",
+        content: `<ul>
+        <li>Lower screen brightness or enable adaptive brightness.</li>
+        <li>Turn off background sync for non-essential apps.</li>
+        <li>Use battery saver mode during low charge.</li>
+        <li>Avoid apps that drain power excessively.</li>
+        </ul>`
+      },
+      {
+        slug: "windows-shortcuts",
+        title: "15 Windows Shortcuts That Save Hours",
+        date: "2025-06-30",
+        read: 4,
+        excerpt: "Boost productivity with these keyboard shortcuts.",
+        content: `<ul>
+        <li><kbd>Win</kbd> + <kbd>D</kbd>: Show desktop</li>
+        <li><kbd>Alt</kbd> + <kbd>Tab</kbd>: Switch apps</li>
+        <li><kbd>Win</kbd> + <kbd>L</kbd>: Lock PC</li>
+        <li><kbd>Win</kbd> + <kbd>V</kbd>: Clipboard history</li>
+        <li>...and more.</li>
+        </ul>`
+      },
+      {
+        slug: "wifi-speed-up",
+        title: "Boost Wi-Fi Speed in 10 Minutes",
+        date: "2025-07-20",
+        read: 5,
+        excerpt: "Quick steps to increase Wi-Fi performance.",
+        content: `<ul>
+        <li>Change Wi-Fi channels to avoid congestion.</li>
+        <li>Place router in a central location.</li>
+        <li>Use 5 GHz band for compatible devices.</li>
+        <li>Limit background downloads during work.</li>
+        </ul>`
+      },
+      {
+        slug: "cloud-security",
+        title: "Cloud Security Basics for Everyone",
+        date: "2025-07-25",
+        read: 6,
+        excerpt: "Protect your files stored online.",
+        content: `<ul>
+        <li>Use strong, unique passwords for cloud accounts.</li>
+        <li>Enable 2FA whenever possible.</li>
+        <li>Regularly back up critical files offline.</li>
+        <li>Check app permissions for cloud integrations.</li>
+        </ul>`
+      }
+    ];
+
+    const guidesEl = document.querySelector('#guides');
+    const searchInput = document.getElementById('searchInput');
+
+    function renderArticles(filter='') {
+      const cards = ARTICLES
+        .filter(a => (a.title + a.excerpt + a.content).toLowerCase().includes(filter.toLowerCase()))
+        .sort((a,b)=>b.date.localeCompare(a.date))
+        .map(a=>{
+          return `
+            <article class="card" id="${a.slug}">
+              <div class="meta">${new Date(a.date).toLocaleDateString()} • ${a.read} min read</div>
+              <h2>${a.title}</h2>
+              <p>${a.excerpt}</p>
+              <details><summary>Read full guide</summary>${a.content}</details>
+            </article>`;
+        }).join('');
+      guidesEl.innerHTML = cards || '<p>No guides found.</p>';
+    }
+
+    searchInput.addEventListener('input', e => renderArticles(e.target.value));
+
+    renderArticles();
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
